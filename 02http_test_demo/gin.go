@@ -11,7 +11,7 @@ type Param struct {
 	Name string `json:"name"`
 }
 
-// helloHandler hello请求处理函数
+// HelloHandler hello请求处理函数
 func HelloHandler(c *gin.Context) {
 	var p Param
 	if err := c.ShouldBindJSON(&p); err != nil {
