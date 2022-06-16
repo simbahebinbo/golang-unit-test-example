@@ -1,60 +1,16 @@
-package main
+package testable
 
 import (
 	"encoding/json"
 	"net/http"
 )
 
-/*
-@author RandySun
-@create 2022-05-03-11:20
-*/
-
 type Order struct {
 	Price int64 `json:"price"`
 	Num   int64 `json:"num"`
 }
 
-//
-// GetAveragePricePerStore
-//  @Description:每家店的人均价
-//  @param storeName
-//  @return int64
-//  @return error
-//
-//func GetAveragePricePerStore(storeName string) (int64, error) {
-//	res, err := http.Get("https://shop.com/api/orders?storeName=" + storeName)
-//	if err != nil {
-//		return 0, err
-//	}
-//	defer res.Body.Close()
-//
-//	var orders []Order
-//	if err := json.NewDecoder(res.Body).Decode(&orders); err != nil {
-//		return 0, err
-//	}
-//
-//	if len(orders) == 0 {
-//		return 0, nil
-//	}
-//
-//	var (
-//		p int64
-//		n int64
-//	)
-//
-//	for _, order := range orders {
-//		p += order.Price
-//		n += order.Num
-//	}
-//
-//	return p / n, nil
-//}
-
-//
-// OrderInfoGetter
-//  @Description: 订单信息提供者
-//
+// OrderInfoGetter 订单信息提供者
 type OrderInfoGetter interface {
 	GetOrders(string) ([]Order, error)
 }

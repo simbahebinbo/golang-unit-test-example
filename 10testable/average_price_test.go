@@ -1,11 +1,7 @@
-package main
+package testable
 
 import "testing"
 
-/*
-@author RandySun
-@create 2022-05-03-13:24
-*/
 // Mock 一个mock类型
 type Mock struct{}
 

@@ -1,25 +1,6 @@
-package main
+package testable
 
 import "github.com/op/go-logging"
-
-/*
-@author RandySun
-@create 2022-05-03-13:38
-*/
-
-//var log = logrus.New()
-//
-//type App struct{}
-//
-//func (a *App) Start() {
-//	log.Info("app start ...")
-//}
-
-//func (a *app) Start() {
-//	a.Logger.Info("app start ...")
-//
-//	// ...
-//}
 
 type App struct {
 	Logger
@@ -27,7 +8,6 @@ type App struct {
 
 func (a *App) Start() {
 	a.Logger.Info("app start ...")
-	// ...
 }
 
 // NewApp 构造函数，将依赖项注入
@@ -47,12 +27,7 @@ type Logger interface {
 }
 
 func main() {
-
-	//app := &App{}
-	//app.Start()
-
 	var log = logging.MustGetLogger("example")
 	app := NewApp(log)
 	app.Start()
-
 }

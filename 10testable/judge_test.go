@@ -1,12 +1,15 @@
-package main
+package testable
 
 import (
 	"testing"
 	"time"
 )
 
-func Test_judgeRateByTime(t *testing.T) {
+func TestJudgeRate(t *testing.T) {
+	t.Log(judgeRate())
+}
 
+func TestJudgeRateByTime(t *testing.T) {
 	tests := []struct {
 		name string
 		args time.Time
