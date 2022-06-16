@@ -8,16 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-/*
-@author RandySun
-@create 2022-04-30-14:57
-*/
-
-//
-//  TestSplit
-//  @Description:  测试函数名必须以Test开头，必须接收一个*testing.T类型参数
-//  @param t
-//
 func TestSplit(t *testing.T) {
 	got := Split("a:b:c", ":")         // 程序输出结果
 	want := []string{"a", "b", "c"}    // 期望的结果
@@ -26,7 +16,6 @@ func TestSplit(t *testing.T) {
 	}
 }
 
-//
 func TestMoreSplit(t *testing.T) {
 	got := Split("abcd", "bc")
 	want := []string{"a", "d"}
@@ -82,16 +71,75 @@ func TestChildrenSplit(t *testing.T) {
 				t.Errorf("expected: %#v, got: %#v", tc.want, got)
 			}
 		})
-
 	}
 }
 
-//// 基准测试
+func TestBatchSplit(t *testing.T) {
+	type args struct {
+		s   string
+		sep string
+	}
+	type test struct {
+		name       string
+		args       args
+		wantResult []string
+	}
+	var tests []test
+
+	test1 := test{
+		name: "simple",
+		args: args{
+			s:   "a:b:c",
+			sep: ":",
+		},
+		wantResult: []string{"a", "b", "c"},
+	}
+	tests = append(tests, test1)
+
+	test2 := test{
+		name: "wrong sep",
+		args: args{
+			s:   "a:b:c",
+			sep: ",",
+		},
+		wantResult: []string{"a:b:c"},
+	}
+	tests = append(tests, test2)
+
+	test3 := test{
+		name: "more sep",
+		args: args{
+			s:   "abcd",
+			sep: "bc",
+		},
+		wantResult: []string{"a", "d"},
+	}
+	tests = append(tests, test3)
+
+	test4 := test{
+		name: "leading sep",
+		args: args{
+			s:   "梦里有肉,我要吃肉",
+			sep: "肉",
+		},
+		wantResult: []string{"梦里有", ",我要吃", ""},
+	}
+	tests = append(tests, test4)
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if gotResult := Split(tt.args.s, tt.args.sep); !reflect.DeepEqual(gotResult, tt.wantResult) {
+				t.Errorf("Split() = %v, want %v", gotResult, tt.wantResult)
+			}
+		})
+	}
+}
+
+// 基准测试
 func BenchmarkSplit(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Split("梦里有肉,我要吃肉", "肉")
 	}
-
 }
 
 func BenchmarkSplitParallel(b *testing.B) {
@@ -159,9 +207,6 @@ func ExampleSplit() {
 func TestAssertSplit(t *testing.T) {
 	got := Split("a:b:c", ":")      // 程序输出结果
 	want := []string{"a", "b", "c"} // 期望的结果
-	//if !reflect.DeepEqual(want, got) { // slice不能直接比较,借助反射包中方法比较
-	//	t.Errorf("expected: %v, got: %v", want, got) // 测试失败输出错误提示
-	//}
-	assert.Equal(t, got, want) // 使用assert提供的断言函数
 
+	assert.Equal(t, got, want) // 使用assert提供的断言函数
 }

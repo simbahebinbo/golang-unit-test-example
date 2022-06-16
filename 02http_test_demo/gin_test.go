@@ -23,7 +23,7 @@ func Test_helloHandler(t *testing.T) {
 	}{
 		{"base case1", `{"name": "RandySun"}`, "hello RandySun"},
 		{"bad case2", "", "we need a name"},
-		{"bad case3", "", "name"},
+		{"bad case3", "", "we need a name"},
 	}
 
 	// 注册路由
