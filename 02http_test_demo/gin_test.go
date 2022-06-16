@@ -53,23 +53,6 @@ func TestHelloHandler(t *testing.T) {
 			t.Logf("response msg: %#v", resp)
 			assert.Nil(t, err)
 			assert.Equal(t, tt.expect, resp["msg"])
-
 		})
 	}
 }
-
-//func TestSetupRoute(t *testing.T) {
-//	tests := []struct {
-//		name string
-//		want *gin.Engine
-//	}{
-//		// TODO: Add test cases.
-//	}
-//	for _, tt := range tests {
-//		t.Run(tt.name, func(t *testing.T) {
-//			if got := SetupRouter(); !reflect.DeepEqual(got, tt.want) {
-//				t.Errorf("SetupRoute() = %v, want %v", got, tt.want)
-//			}
-//		})
-//	}
-//}

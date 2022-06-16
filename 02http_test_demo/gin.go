@@ -12,7 +12,7 @@ type Param struct {
 }
 
 // helloHandler hello请求处理函数
-func helloHandler(c *gin.Context) {
+func HelloHandler(c *gin.Context) {
 	var p Param
 	if err := c.ShouldBindJSON(&p); err != nil {
 		c.JSON(http.StatusOK, gin.H{
@@ -28,6 +28,6 @@ func helloHandler(c *gin.Context) {
 // SetupRouter 路由
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
-	router.POST("/hello", helloHandler)
+	router.POST("/hello", HelloHandler)
 	return router
 }
