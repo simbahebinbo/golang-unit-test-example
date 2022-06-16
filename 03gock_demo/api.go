@@ -7,34 +7,17 @@ import (
 	"net/http"
 )
 
-/*
-@author RandySun
-@create 2022-04-30-22:06
-*/
-
-//
-// ReqParam
-//  @Description: Api请求参数
-//
+// ReqParam Api请求参数
 type ReqParam struct {
 	X int `json:"x"`
 }
 
-//
-// Result
-//  @Description: API返回结果
-//
+// Result API返回结果
 type Result struct {
 	Value int `json:"value"`
 }
 
-//
-// GetResultByApi
-//  @Description: 调用外部api
-//  @param x
-//  @param y
-//  @return int
-//
+// GetResultByAPI 调用外部api
 func GetResultByAPI(x, y int) int {
 	p := &ReqParam{
 		X: x,

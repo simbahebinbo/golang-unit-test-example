@@ -7,27 +7,8 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
-func TestGetResultByApi(t *testing.T) {
-	//defer gock.Off() // 测试执行后刷新挂起的mock
-	//type args struct {
-	//	x int
-	//	y int
-	//}
-	//tests := []struct {
-	//	name string
-	//	args args
-	//	want int
-	//}{
-	//	// TODO: Add test cases.
-	//}
-	//for _, tt := range tests {
-	//	t.Run(tt.name, func(t *testing.T) {
-	//		if got := GetResultByApi(tt.args.x, tt.args.y); got != tt.want {
-	//			t.Errorf("GetResultByApi() = %v, want %v", got, tt.want)
-	//		}
-	//	})
-	//}
-
+func TestGetResultByAPI(t *testing.T) {
+	defer gock.Off() // 测试执行后刷新挂起的mock
 	// mock 请求外部api时传参x=1返回100
 	gock.New("http://your-api.com").
 		Post("/post").
