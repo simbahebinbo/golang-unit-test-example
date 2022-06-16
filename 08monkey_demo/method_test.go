@@ -8,12 +8,8 @@ import (
 	"bou.ke/monkey"
 )
 
-//
-//  TestUser_GetInfo
-//  @Description: 为方法打桩
-//  @param t
-//
-func TestUser_GetInfo(t *testing.T) {
+//  TestUserGetInfo 为方法打桩
+func TestUserGetInfo(t *testing.T) {
 	var u = &User{
 		Name:     "RandySun",
 		Birthday: "2004-06-30",
