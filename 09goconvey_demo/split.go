@@ -2,18 +2,7 @@ package goconvey_demo
 
 import "strings"
 
-/*
-@author RandySun
-@create 2022-05-01-19:19
-*/
-
-//
-// Split
-//  @Description: 把字符串s按照给定的分隔符sep进行分割返回字符串切片
-//  @param s
-//  @param sep
-//  @return result
-//
+// Split 把字符串s按照给定的分隔符sep进行分割返回字符串切片
 func Split(s, sep string) (result []string) {
 	result = make([]string, 0, strings.Count(s, sep)+1)
 	i := strings.Index(s, sep)
@@ -25,4 +14,21 @@ func Split(s, sep string) (result []string) {
 
 	result = append(result, s)
 	return
+}
+
+func StringSliceEqual(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	if (a == nil) != (b == nil) {
+		return false
+	}
+
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }

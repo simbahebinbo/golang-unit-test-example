@@ -2,6 +2,28 @@ package base_demo
 
 import "testing"
 
+func TestFib(t *testing.T) {
+	var fibTests = []struct {
+		in       int // input
+		expected int // expected result
+	}{
+		{1, 1},
+		{2, 2},
+		{3, 4},
+		{4, 8},
+		{5, 16},
+		{6, 32},
+		{7, 64},
+	}
+
+	for _, tt := range fibTests {
+		actual := Fib(tt.in)
+		if actual != tt.expected {
+			t.Errorf("Fib(%d) = %d; expected %d", tt.in, actual, tt.expected)
+		}
+	}
+}
+
 func benchmarkFib(b *testing.B, n int) {
 	for i := 0; i < b.N; i++ {
 		Fib(n)

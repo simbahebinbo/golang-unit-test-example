@@ -6,11 +6,7 @@ import (
 	c "github.com/smartystreets/goconvey/convey"
 )
 
-//
 //  TestSplit
-//  @Description:
-//  @param t
-//
 func TestSplit(t *testing.T) {
 	c.Convey("基础用例", t, func() {
 		var (
@@ -30,15 +26,10 @@ func TestSplit(t *testing.T) {
 		)
 		got := Split(s, sep)
 		c.So(got, c.ShouldResemble, expect) // 断言
-
 	})
 }
 
-//
-//  TestChildrenSplit
-//  @Description: 嵌套调用
-//  @param t
-//
+//  TestChildrenSplit 嵌套调用
 func TestChildrenSplit(t *testing.T) {
 	// 只需要在顶层的Convey调用时传入t
 	c.Convey("分隔符在开头或者结尾用例", t, func() {
@@ -59,5 +50,18 @@ func TestChildrenSplit(t *testing.T) {
 			})
 		}
 	})
+}
 
+func TestStringSliceEqual(t *testing.T) {
+	c.Convey("TestStringSliceEqual", t, func() {
+		c.Convey("true when a != nil  && b != nil", func() {
+			a := []string{"hello", "goconvey"}
+			b := []string{"hello", "goconvey"}
+			c.So(StringSliceEqual(a, b), c.ShouldBeTrue)
+		})
+
+		c.Convey("true when a ＝= nil  && b ＝= nil", func() {
+			c.So(StringSliceEqual(nil, nil), c.ShouldBeTrue)
+		})
+	})
 }
