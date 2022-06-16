@@ -8,12 +8,13 @@ func TestFib(t *testing.T) {
 		expected int // expected result
 	}{
 		{1, 1},
-		{2, 2},
-		{3, 4},
-		{4, 8},
-		{5, 16},
-		{6, 32},
-		{7, 64},
+		{2, 1},
+		{3, 2},
+		{4, 3},
+		{5, 5},
+		{6, 8},
+		{7, 13},
+		{8, 21},
 	}
 
 	for _, tt := range fibTests {

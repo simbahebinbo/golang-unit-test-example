@@ -1,6 +1,10 @@
 package testable
 
-import "github.com/op/go-logging"
+import (
+	"github.com/op/go-logging"
+	"math/rand"
+	"time"
+)
 
 type App struct {
 	Logger
@@ -27,7 +31,14 @@ type Logger interface {
 }
 
 func main() {
-	var log = logging.MustGetLogger("example")
-	app := NewApp(log)
-	app.Start()
+	rand.Seed(time.Now().UnixNano())
+	num := rand.Intn(460000)
+	if num%2 == 0 {
+		var log = logging.MustGetLogger("example")
+		app := NewApp(log)
+		app.Start()
+	} else {
+		app := &App{}
+		app.Start()
+	}
 }
