@@ -7,20 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-/*
-@author RandySun
-@create 2022-04-30-21:06
-*/
-
 type Param struct {
 	Name string `json:"name"`
 }
 
-//
-//  helloHandler
-//  @Description: hello请求处理函数
-//  @param c
-//
+// helloHandler hello请求处理函数
 func helloHandler(c *gin.Context) {
 	var p Param
 	if err := c.ShouldBindJSON(&p); err != nil {
@@ -34,11 +25,7 @@ func helloHandler(c *gin.Context) {
 	})
 }
 
-//
-// SetupRoute
-//  @Description: 路由
-//  @return *gin.Engine
-//
+// SetupRouter 路由
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 	router.POST("/hello", helloHandler)

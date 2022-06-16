@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_helloHandler(t *testing.T) {
+func TestHelloHandler(t *testing.T) {
 	type args struct {
 		c *gin.Context
 	}

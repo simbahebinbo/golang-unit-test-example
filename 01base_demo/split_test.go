@@ -84,47 +84,12 @@ func TestBatchSplit(t *testing.T) {
 		args       args
 		wantResult []string
 	}
-	var tests []test
-
-	test1 := test{
-		name: "simple",
-		args: args{
-			s:   "a:b:c",
-			sep: ":",
-		},
-		wantResult: []string{"a", "b", "c"},
+	var tests []test = []test{
+		{"simple", args{"a:b:c", ":"}, []string{"a", "b", "c"}},
+		{"wrong sep", args{"a:b:c", ","}, []string{"a:b:c"}},
+		{"more sep", args{"abcd", "bc"}, []string{"a", "d"}},
+		{"leading sep", args{"梦里有肉,我要吃肉", "肉"}, []string{"梦里有", ",我要吃", ""}},
 	}
-	tests = append(tests, test1)
-
-	test2 := test{
-		name: "wrong sep",
-		args: args{
-			s:   "a:b:c",
-			sep: ",",
-		},
-		wantResult: []string{"a:b:c"},
-	}
-	tests = append(tests, test2)
-
-	test3 := test{
-		name: "more sep",
-		args: args{
-			s:   "abcd",
-			sep: "bc",
-		},
-		wantResult: []string{"a", "d"},
-	}
-	tests = append(tests, test3)
-
-	test4 := test{
-		name: "leading sep",
-		args: args{
-			s:   "梦里有肉,我要吃肉",
-			sep: "肉",
-		},
-		wantResult: []string{"梦里有", ",我要吃", ""},
-	}
-	tests = append(tests, test4)
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
