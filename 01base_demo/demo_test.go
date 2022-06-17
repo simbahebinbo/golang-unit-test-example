@@ -105,3 +105,11 @@ func BenchmarkConcatStringBytesBuffer(b *testing.B) {
 		}
 	}
 }
+
+func TestSomething(t *testing.T) {
+	// 断言两者相等
+	assert.Equal(t, 123, 123)
+
+	// 断言两者不相等
+	assert.NotEqual(t, 123, 456)
+}

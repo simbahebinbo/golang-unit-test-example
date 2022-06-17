@@ -5,6 +5,7 @@ go 1.18
 require (
 	bou.ke/monkey v1.0.2
 	github.com/DATA-DOG/go-sqlmock v1.5.0
+	github.com/agiledragon/gomonkey/v2 v2.8.0
 	github.com/alicebob/miniredis/v2 v2.21.0
 	github.com/gavv/httpexpect/v2 v2.3.1
 	github.com/gin-gonic/gin v1.8.1
