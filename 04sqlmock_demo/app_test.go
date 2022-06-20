@@ -30,7 +30,6 @@ func TestShouldUpdateStats(t *testing.T) {
 	if err := mock.ExpectationsWereMet(); err != nil {
 		t.Errorf("there were unflfilled expectations: %s", err)
 	}
-
 }
 
 // TestShouldRollbackStatUpdatesOnFailure sql执行失败回滚的测试用例

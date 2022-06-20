@@ -2,19 +2,7 @@ package sqlmock_demo
 
 import "database/sql"
 
-/*
-@author RandySun
-@create 2022-05-01-10:43
-*/
-
-//
-//  recordStats
-//  @Description: 记录用户浏览产品信息 在`products`表中将当前商品的浏览次数+1 - 在`product_viewers`表中记录浏览当前商品的用户id
-//  @param db 数据库连接对象
-//  @param userId 用户id
-//  @param productId 产品id
-//  @return err
-//
+//  recordStats 记录用户浏览产品信息 在`products`表中将当前商品的浏览次数+1 - 在`product_viewers`表中记录浏览当前商品的用户id
 func recordStats(db *sql.DB, userId, productId int64) (err error) {
 	// 开启事务
 	// 操作views和product_viewers两张表
@@ -28,7 +16,6 @@ func recordStats(db *sql.DB, userId, productId int64) (err error) {
 		case nil:
 			err = tx.Commit()
 		default:
-
 			tx.Rollback()
 		}
 	}()
@@ -43,7 +30,6 @@ func recordStats(db *sql.DB, userId, productId int64) (err error) {
 		return
 	}
 	return
-
 }
 
 func main() {
@@ -57,5 +43,4 @@ func main() {
 	if err = recordStats(db, 1 /*some user id*/, 5 /*some product id*/); err != nil {
 		panic(err)
 	}
-
 }

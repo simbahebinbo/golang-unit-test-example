@@ -4,15 +4,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-redis/redis/v8"
-
 	"github.com/alicebob/miniredis/v2"
+	"github.com/go-redis/redis/v8"
 )
-
-/*
-@author RandySun
-@create 2022-05-01-11:42
-*/
 
 func TestDoSomethingWithRedis(t *testing.T) {
 	// mock 一个redis server

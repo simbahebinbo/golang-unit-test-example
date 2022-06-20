@@ -8,11 +8,6 @@ import (
 	"github.com/go-redis/redis/v8" // 注意导入版本
 )
 
-/*
-@author RandySun
-@create 2022-05-01-11:35
-*/
-
 const KeyValidWebSite = "app:valid:website:list"
 
 func DoSomethingWithRedis(rdb *redis.Client, key string) bool {
