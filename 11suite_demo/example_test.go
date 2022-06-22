@@ -12,15 +12,25 @@ type ExampleTestSuite struct {
 	VariableThatShouldStartAtFive int
 }
 
-// 准备测试环境
+// 在测试套件启动前执行一次
+func (suite *ExampleTestSuite) SetupSuite() {
+	fmt.Println("SetupSuite 在测试套件启动前执行一次")
+}
+
+// 在测试套件用例都执行完成
+func (suite *ExampleTestSuite) TearDownSuite() {
+	fmt.Println("TearDownSuite 在测试套件用例都执行完成")
+}
+
+// 在每个用例执行前执行一次
 func (suite *ExampleTestSuite) SetupTest() {
-	fmt.Println("SetupTest")
+	fmt.Println("SetupTest 在每个用例执行前执行一次")
 	suite.VariableThatShouldStartAtFive = 5
 }
 
-// 恢复测试环境
+// 在每个用例执行后执行一次
 func (suite *ExampleTestSuite) TearDownTest() {
-	fmt.Println("TearDownTest")
+	fmt.Println("TearDownTest 在每个用例执行后执行一次")
 }
 
 // 测试案例
